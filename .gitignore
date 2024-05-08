@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # exe フォルダは要らない
 exe/
+
+# Standard Assets フォルダは要らない
+Assets/Standard Assets/

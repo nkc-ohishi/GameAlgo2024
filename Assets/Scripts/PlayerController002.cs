@@ -1,17 +1,17 @@
 //--------------------------------------------------------------------
 // 科目：ゲームアルゴリズム1年
 // 内容：加速度運動
-// 日時：2023.05.19 Ken.D.Ohishi
+// 日時：2024.05.22 Ken.D.Ohishi
 //--------------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;               // Text型を利用可能にする
+using UnityEngine.SceneManagement;  // SceneManager.LoadSceneメソッドを利用可能にする
 
 public class PlayerController002 : MonoBehaviour
 {
-    public Text speedText;  // UI-TEXTオブジェクトを保存する
+    public Text speedText;  // UI-Legacy-TEXTのTextコンポーネントを保存する
 
     Vector3 dir;            // 移動方向を保存する変数
     Vector3 inputDir;       // 入力情報を保存する変数
@@ -24,11 +24,11 @@ public class PlayerController002 : MonoBehaviour
     void Start()
     {
         // 各変数初期化
-        dir = Vector3.zero;
+        dir      = Vector3.zero;
         inputDir = Vector3.zero;
-        speed = 0;
-        axel = 0.02f;
-        bdash = 1;
+        speed    = 0;
+        axel     = 0.02f;
+        bdash    = 1;
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class PlayerController002 : MonoBehaviour
             // 加速度を増やす
             speed += axel;
             // スピードを増やす（上限設定あり）
-            speed = (speed <= MAX_SPEED) ? speed : MAX_SPEED;
+            speed = Mathf.Min(speed, MAX_SPEED);
 
             // 入力情報を移動方向に反映
             dir = inputDir;

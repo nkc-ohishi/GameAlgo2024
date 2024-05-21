@@ -1,17 +1,17 @@
 //--------------------------------------------------------------------
 // 科目：ゲームアルゴリズム1年
 // 内容：向いている方向に移動
-// 日時：2024.05.22 Ken.D.Ohishi
+// 日時：2024.05.29 Ken.D.Ohishi
 //--------------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;               // Text型を利用可能にする
+using UnityEngine.SceneManagement;  // SceneManager.LoadSceneメソッドを利用可能にする
 
 public class PlayerController003 : MonoBehaviour
 {
-    public Text speedText;  // UI-TEXTオブジェクトを保存する
+    public Text speedText;  // UI-Legacy-TEXTのTextコンポーネントを保存する
 
     Vector3 dir;            // 移動方向を保存する変数
     float speed;            // 移動量を保存する変数
@@ -25,11 +25,11 @@ public class PlayerController003 : MonoBehaviour
     void Start()
     {
         // 各変数初期化
-        dir = Vector3.zero;
-        speed = 0;
-        axel = 0.02f;
-        bdash = 1;
-        rad = 0;
+        dir      = Vector3.zero;
+        speed    = 0;
+        axel     = 0.02f;
+        bdash    = 1;
+        rad      = 0;
         rotSpeed = 3;
     }
 
@@ -49,7 +49,7 @@ public class PlayerController003 : MonoBehaviour
             speed += axel;
 
             // スピードを増やす（上限設定あり）
-            speed = (speed <= MAX_SPEED) ? speed : MAX_SPEED;
+            speed = Mathf.Min(speed, MAX_SPEED);
 
             // 進行方向をセット
             dir = transform.forward * z;
@@ -57,7 +57,7 @@ public class PlayerController003 : MonoBehaviour
         else
         {
             // 減速処理
-            speed *= 0.9f;
+            speed *= 0.98f;
         }
 
         // クリックでリスタート

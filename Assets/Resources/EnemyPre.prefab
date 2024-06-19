@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7051481353311601279}
   - component: {fileID: 3818592848877862867}
   - component: {fileID: 6252076273720175534}
-  - component: {fileID: 5035880629604517812}
+  - component: {fileID: -7861249213720566033}
   m_Layer: 0
   m_Name: EnemyPre
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5035880629604517812
+--- !u!114 &-7861249213720566033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299419602081341939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67febc940e280d49bc8085f78796629, type: 3}
+  m_Script: {fileID: 11500000, guid: 322a20f272267e740ab0910518ac144e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

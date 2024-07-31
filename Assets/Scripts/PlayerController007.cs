@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------
 // 科目：ゲームアルゴリズム1年
-// 内容：当たり判定
-// 日時：2024.06.26 Ken.D.Ohishi
+// 内容：エフェクト追加
+// 日時：2024.07.10 Ken.D.Ohishi
 //--------------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +9,12 @@ using UnityEngine;
 using UnityEngine.UI;               // Text型を利用可能にする
 using UnityEngine.SceneManagement;  // SceneManager.LoadSceneメソッドを利用可能にする
 
-public class PlayerController006 : MonoBehaviour
+public class PlayerController007 : MonoBehaviour
 {
     public Text speedText;  // UI-Legacy-TEXTのTextコンポーネントを保存する
     public Text powerText;  // UI-Legacy-TEXTのTextコンポーネントを保存する
     GameObject bulletPre;   // 弾のプレハブを保存する
+    GameObject firePre;     // 燃えてるエフェクトのプレハブを保存する
 
     Vector3 dir;            // 移動方向を保存する変数
     float speed;            // 移動量を保存する変数
@@ -45,6 +46,9 @@ public class PlayerController006 : MonoBehaviour
 
         // Resourcesフォルダ内にある弾のプレハブを取得する
         bulletPre = (GameObject)Resources.Load("BulletPre");
+
+        // Resourcesフォルダ内にある炎のプレハブを取得する
+        firePre = (GameObject)Resources.Load("MyFireMobile");
 
         // SphereColliderコンポーネントを取得
         spCollider = GetComponent<SphereCollider>();
@@ -144,6 +148,16 @@ public class PlayerController006 : MonoBehaviour
 
         // 弾レベル表示
         powerText.text = "弾レベル " + (power+1).ToString("D2");
+    }
+
+    void OnTriggerEnter(Collider c)
+    {
+        // 当たってきたオブジェクトのTagが「Enemy」だったら
+        if (c.tag == "Enemy" && hakiFlg == false)
+        {
+            Vector3 pos = transform.position + new Vector3(0, 1, 0);
+            Instantiate(firePre, pos, transform.rotation);
+        }
     }
 
 }

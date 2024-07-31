@@ -17,19 +17,19 @@ public class EnemyGenerator005 : MonoBehaviour
     void Start()
     {
         // エネミータイプ
-        enemyType = 0;
+        enemyType = 1;
 
         // タイプ０の設定(最初のエネミー)
-        float x = Random.Range(-49f, 49f);
-        pos = new Vector3(x, 0.5f, 50f);
-        rot.eulerAngles = new Vector3(0f, 180f, 0f);
+        //float x = Random.Range(-49f, 49f);
+        //pos = new Vector3(x, 0.5f, 50f);
+        //rot.eulerAngles = new Vector3(0f, 180f, 0f);
 
         // タイプ１の設定
-        //float rad = Random.Range(0, 360);
-        //float x = 50f * Mathf.Cos(rad * Mathf.Deg2Rad);
-        //float z = 50f * Mathf.Sin(rad * Mathf.Deg2Rad);
-        //pos = new Vector3(x, 0.5f, z);
-        //rot.eulerAngles = new Vector3(0f, -(rad + 90f), 0f);
+        float rad = Random.Range(0, 360);
+        float x = 50f * Mathf.Cos(rad * Mathf.Deg2Rad);
+        float z = 50f * Mathf.Sin(rad * Mathf.Deg2Rad);
+        pos = new Vector3(x, 0.5f, z);
+        rot.eulerAngles = new Vector3(0f, -(rad + 90f), 0f);
 
         // コルーチン：【EnemyCreate】を実行する
         StartCoroutine("EnemyCreate");
@@ -79,7 +79,7 @@ public class EnemyGenerator005 : MonoBehaviour
             Instantiate(enemyPre, pos, rot);
 
             // メソッドを一定時間中断
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
